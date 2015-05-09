@@ -9,13 +9,13 @@
    
     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
        <div class="row">
-           <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+           <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
                <h2>Remaining Calories: @ViewBag.Total</h2>
            </div>
-         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-             <div class="btn-group btn-toolbar">
-                 <button type="button" ng-click="" class="btn btn-default" tooltip ="Log A Meal" tooltip-placement="top"><span class="glyphicon glyphicon-plus"></span></button>
-                 <button type="button" class="btn btn-default" tooltip="Log Exercise" tooltip-placement="top"><span class="glyphicon glyphicon-minus"></span></button>
+         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+             <div class="btn-toolbar pull-right">
+                <log-a-meal-button class="btn-group"></log-a-meal-button>
+                 <log-exercise-button class="btn-group"></log-exercise-button>
              </div>
          </div>
 

@@ -13,5 +13,15 @@ namespace InversionOfControlContainerExercise.Controllers
         {
             return View("~/Views/Log/MyLog.cshtml");
         }
+
+        public ActionResult LogAMeal()
+        {
+            return View("~/Views/Log/LogAMeal.cshtml");
+        }
+
+        public ActionResult LogExercise()
+        {
+            return View("~/Views/Log/LogExercise.cshtml");
+        }
     }
 }

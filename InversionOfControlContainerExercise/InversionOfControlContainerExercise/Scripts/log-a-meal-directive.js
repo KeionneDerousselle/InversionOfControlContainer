@@ -1,7 +1,7 @@
-﻿transcriptionApp.directive('submitCourseButton', function () {
+﻿calorieTrackerApp.directive('logAMealButton', function () {
     return {
         restrict: 'E',
-        templateUrl: 'views/Log/logAMeal.html',
+        templateUrl: '/log/logAMeal',
         controller: ['$scope', 'Log', '$modal', function ($scope, Course, $modal) {
 
             $scope.meal =
@@ -31,7 +31,7 @@
     };
 });
 
-transcriptionApp.controller('LogMealModalInstanceCtrl', function ($scope, $modalInstance, meal) {
+calorieTrackerApp.controller('LogMealModalInstanceCtrl', function ($scope, $modalInstance, meal) {
 
     $scope.meal = meal;
 

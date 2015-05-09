@@ -1,0 +1,1 @@
+﻿var services = angular.module('calorieTrackerApp.services', ['ngResource']).value('version', '0.1');

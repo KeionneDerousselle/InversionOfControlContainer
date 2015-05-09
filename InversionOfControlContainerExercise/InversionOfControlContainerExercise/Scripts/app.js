@@ -1,4 +1,4 @@
-﻿var calorieTrackerApp = angular.module('calorieTrackerApp', ['ui.bootstrap', 'ui.router'])
+﻿var calorieTrackerApp = angular.module('calorieTrackerApp', ['ui.bootstrap', 'ui.router', 'calorieTrackerApp.services', 'calorieTrackerApp.directives', 'ngResource'])
 .config(['$locationProvider', '$stateProvider', '$urlRouterProvider',function ($locationProvider, $stateProvider, $urlRouterProvider) {
 
     $locationProvider.html5Mode({
