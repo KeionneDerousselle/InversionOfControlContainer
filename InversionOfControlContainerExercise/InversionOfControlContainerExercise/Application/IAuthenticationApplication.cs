@@ -8,6 +8,6 @@ namespace InversionOfControlContainerExercise.Application
 {
     public interface IAuthenticationApplication
     {
-        public bool UserIsValid(string username, string password);
+        bool UserIsValid(string username, string password);
     }
 }
