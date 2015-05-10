@@ -64,5 +64,15 @@ namespace IOCWebAppSpecs.Tests
             Assert.False(authenticationApp.UserIsValid(newUser.Username, newUser.Password));
         }
 
+        [Test]
+        public void TestRegisterUser()
+        {
+            User returnedUser = null;
+            Assert.False(authenticationApp.UserIsValid(newUser.Username, newUser.Password));
+
+            authenticationApp.Register(newUser);
+            Assert.True(authenticationApp.UserIsValid(newUser.Username, newUser.Password));
+        }
+
     }
 }
