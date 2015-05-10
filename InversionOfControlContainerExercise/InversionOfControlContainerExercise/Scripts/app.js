@@ -6,13 +6,28 @@
         requireBase: false
     });
 
-    $urlRouterProvider.otherwise("/myLog");
+    $urlRouterProvider.otherwise("/authenticate");
 
     $stateProvider
     .state('app', {
         url: "",
         controller: "CalorieTrackerCtrl",
         templateUrl: "/shared/"
+    })
+    .state('app.authentication', {
+        url: "/authenticate",
+        controller: "AuthenticationCtrl",
+        templateUrl: "/authentication"
+    })
+    .state('app.authentication.login', {
+        url: "/login",
+        controller: "LoginCtrl",
+        templateUrl:"/authentication/login"
+    })
+    .state('app.authentication.register', {
+        url: "/register",
+        controller: "RegisterCtrl",
+        templateUrl: "/authentication/register"
     })
     .state('app.manageLog', {
         url: "/myLog",
