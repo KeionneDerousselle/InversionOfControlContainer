@@ -13,6 +13,14 @@ namespace InversionOfControlContainerExercise
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.LowercaseUrls = true;
+
+            routes.MapRoute
+                (
+                name:"AngularOverride",
+                url:"calorieTracker/{*.}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

@@ -45,11 +45,11 @@ namespace InversionOfControlContainerExercise.Controllers
             {
                 FormsAuthentication.SetAuthCookie(username, false);
 
-                result = RedirectToRoute("/myLog");
+                result = Redirect("/calorieTracker/myLog");
             }
             else
             {
-                result = RedirectToRoute("/authenticate");
+                result = Redirect("/calorieTracker/authenticate");
             }
             return result;
         }
@@ -86,7 +86,7 @@ namespace InversionOfControlContainerExercise.Controllers
 
                             authenticationApplication.Register(user);
                             FormsAuthentication.SetAuthCookie(username, false);
-                            result = View("~/Views/Log/MyLog.cshtml");
+                            result = Redirect("/calorieTracker/myLog");
                         }
                         catch(Exception e)
                         {
@@ -99,7 +99,7 @@ namespace InversionOfControlContainerExercise.Controllers
 
             if(!validFormat)
             {
-                result = View("~/Views/Authentication/Register.cshtml");
+                result = Redirect("/calorieTracker/authenticate");
             }
             return result;
         }

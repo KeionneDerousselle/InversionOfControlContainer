@@ -6,11 +6,11 @@
         requireBase: false
     });
 
-    $urlRouterProvider.otherwise("/authenticate");
+    $urlRouterProvider.otherwise("/calorieTracker/authenticate");
 
     $stateProvider
     .state('app', {
-        url: "",
+        url: "/calorieTracker",
         controller: "CalorieTrackerCtrl",
         templateUrl: "/shared/"
     })
