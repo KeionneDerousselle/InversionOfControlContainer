@@ -4,33 +4,36 @@
 }
 
 <div class="col-md-6 col-md-offset-3">
+@using (Html.BeginForm("RegisterUser", "Authentication"))
+{
     <form name="form" role="form">
         <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
-            <input type="text" class="form-control" ng-model="user.Name" required placeholder="Name"/>
+            <input type="text" id="name" name="name" class="form-control" ng-model="user.name" required placeholder="Name"/>
             <span ng-show="form.name.$dirty && form.name.$error.required" class="help-block">Name is required</span>
         </div>
         <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
-            <input type="text" class="form-control" ng-model="user.username" required placeholder="Username" />
+            <input type="text" id="username" name="username" class="form-control" ng-model="user.username" required placeholder="Username" />
             <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
         </div>
         <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
-            <input type="password" class="form-control" ng-model="user.password" required placeholder="Password" />
+            <input type="password" id="password" name="password" class="form-control" ng-model="user.password" required placeholder="Password" />
             <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
         </div>
         <div class="form-group" ng-class="{ 'has-error': form.weight.$dirty && form.weight.$error.required }">
-            <input type="number" class="form-control" ng-model="user.weight" required placeholder="Weight(lbs)" min="0" step="0.1"  />
+            <input type="number" id="weight" name="weight" class="form-control" ng-model="user.weight" required placeholder="Weight(lbs)" min="0" step="0.1"  />
             <span ng-show="form.weight.$dirty && form.weight.$error.required" class="help-block">Weight in lbs is required</span>
         </div>
 
         <label class="radio-inline">
-            <input type="radio" name="GenderOptions" id="maleOption" value="option1">Male
+            <input type="radio" name="gender" id="maleOption" value="Male">Male
         </label>
         <label class="radio-inline">
-            <input type="radio" name="GenderOptions" id="femaleOption" value="option2">Female
+            <input type="radio" name="gender" id="femaleOption" value="Female">Female
         </label>
 
         <div class="form-actions">
-            <button type="submit" ng-click="submitRegister();" ng-disabled="form.$invalid" class="btn btn-info pull-right">Register</button>
+            <button type="submit"  ng-disabled="form.$invalid" class="btn btn-info pull-right">Register</button>
         </div>
     </form>
+}
 </div>

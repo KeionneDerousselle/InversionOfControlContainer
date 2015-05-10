@@ -3,6 +3,7 @@ using InversionOfControlContainerExercise.Models;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -43,6 +44,7 @@ namespace IOCWebAppSpecs.Tests
         [TestFixtureSetUp]
         public void Init()
         {
+            ConfigurationSettings.AppSettings["users_save_location"] = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/PersistedUsers/AllUsers.txt";
             userRepo = new UserRepository();
             List<User> allUsers = new List<User> { savedUser };
             foreach(User user in allUsers)

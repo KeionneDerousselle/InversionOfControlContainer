@@ -8,6 +8,7 @@ using InversionOfControlContainerExercise.Models;
 using NUnit.Framework;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Configuration;
 
 namespace IOCWebAppSpecs.Tests
 {
@@ -43,6 +44,9 @@ namespace IOCWebAppSpecs.Tests
         [TestFixtureSetUp]
         public void Init()
         {
+            
+            ConfigurationSettings.AppSettings["users_save_location"] = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/PersistedUsers/AllUsers.txt";
+
             authenticationApp = new AuthenticationApplication();
             List<User> allUsers = new List<User> { savedUser };
           

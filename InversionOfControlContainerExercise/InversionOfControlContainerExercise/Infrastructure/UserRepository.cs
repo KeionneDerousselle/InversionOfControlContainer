@@ -1,6 +1,7 @@
 ﻿using InversionOfControlContainerExercise.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -10,9 +11,12 @@ namespace InversionOfControlContainerExercise.Infrastructure
 {
     public class UserRepository : IUserRepository
     {
-        private static readonly string USERS_SAVE_LOCATION = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/PersistedUsers/AllUsers.txt";
+        private string USERS_SAVE_LOCATION = "";
 
-        public UserRepository(){}
+        public UserRepository()
+        {
+           USERS_SAVE_LOCATION = ConfigurationSettings.AppSettings["users_save_location"];
+        }
 
         public User GetAuthenticatedUser(string username, string password)
         {
