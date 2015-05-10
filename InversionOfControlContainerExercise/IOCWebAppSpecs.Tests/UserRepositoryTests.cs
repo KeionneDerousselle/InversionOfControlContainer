@@ -45,9 +45,9 @@ namespace IOCWebAppSpecs.Tests
         {
             userRepo = new UserRepository();
             List<User> allUsers = new List<User> { savedUser };
-            using (var stream = File.Open(USERS_SAVE_LOCATION, FileMode.Create))
+            foreach(User user in allUsers)
             {
-                new BinaryFormatter().Serialize(stream, allUsers);
+                userRepo.Create(user);
             }
         }
 
@@ -57,6 +57,18 @@ namespace IOCWebAppSpecs.Tests
             User returnedUser = null;
             returnedUser = userRepo.GetAuthenticatedUser(savedUser.Username, savedUser.Password);
             Assert.That(returnedUser.Equals(savedUser));
+        }
+
+        [Test]
+        public void TestCreateUser()
+        {
+            User returnedUser = null;
+            returnedUser = userRepo.GetAuthenticatedUser(newUser.Username, newUser.Password);
+            Assert.That(returnedUser == null);
+
+            userRepo.Create(newUser);
+            returnedUser = userRepo.GetAuthenticatedUser(newUser.Username, newUser.Password);
+            Assert.That(returnedUser.Equals(newUser));
         }
 
     }

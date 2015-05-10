@@ -45,9 +45,10 @@ namespace IOCWebAppSpecs.Tests
         {
             authenticationApp = new AuthenticationApplication();
             List<User> allUsers = new List<User> { savedUser };
-            using (var stream = File.Open(USERS_SAVE_LOCATION, FileMode.Create))
+          
+            foreach(User u in allUsers)
             {
-                new BinaryFormatter().Serialize(stream, allUsers);
+                authenticationApp.Register(savedUser);
             }
         }
 

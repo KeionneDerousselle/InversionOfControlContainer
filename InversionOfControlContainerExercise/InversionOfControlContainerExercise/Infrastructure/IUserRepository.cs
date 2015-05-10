@@ -10,5 +10,6 @@ namespace InversionOfControlContainerExercise.Infrastructure
     public interface IUserRepository
     {
         User GetAuthenticatedUser(string username, string password);
+        void Create(User user);
     }
 }

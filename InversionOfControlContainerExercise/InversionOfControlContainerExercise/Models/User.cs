@@ -21,5 +21,20 @@ namespace InversionOfControlContainerExercise.Models
         {
 
         }
+
+        public override bool Equals(object obj)
+        {
+            bool equals = false;
+            if(obj is User)
+            {
+                User other = (obj as User);
+
+                equals = (this.Id == other.Id) &&
+                         (this.Name.Equals(other.Name)) &&
+                         (this.Password.Equals(other.Password)) &&
+                         (this.Gender.Equals(other.Gender));
+            }
+            return equals;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InversionOfControlContainerExercise.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,6 @@ namespace InversionOfControlContainerExercise.Application
     public interface IAuthenticationApplication
     {
         bool UserIsValid(string username, string password);
+        void Register(User user);
     }
 }
