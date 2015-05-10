@@ -2,7 +2,7 @@
     function ($resource) {
         return $resource('/authentication/:action', {},
          {
-             'login': { method: 'POST', params: { action: 'login' } },
-             'register': { method: 'POST', params: { action: 'register' } },
+             'login': { method: 'POST', params: { action: 'loginUser' } },
+             'register': { method: 'POST', params: { action: 'registerUser' } },
          });
     }]);
