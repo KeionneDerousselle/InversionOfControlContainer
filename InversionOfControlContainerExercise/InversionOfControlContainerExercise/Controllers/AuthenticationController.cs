@@ -9,6 +9,7 @@ using InversionOfControlContainerExercise.Models;
 
 namespace InversionOfControlContainerExercise.Controllers
 {
+    [AllowAnonymous]
     public class AuthenticationController : Controller
     {
         private IAuthenticationApplication authenticationApplication;
@@ -43,7 +44,20 @@ namespace InversionOfControlContainerExercise.Controllers
                && password != null && password.Length > 0
                && authenticationApplication.UserIsValid(username, password))
             {
-                FormsAuthentication.SetAuthCookie(username, false);
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket
+                (
+                     1,
+                     username,
+                     DateTime.Now,
+                     DateTime.Now.AddMinutes(30),
+                     true, String.Empty,
+                     FormsAuthentication.FormsCookiePath
+                );
+
+                string encryptedCookie = FormsAuthentication.Encrypt(ticket);
+                HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedCookie);
+                cookie.Expires = DateTime.Now.AddMinutes(30);
+                ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
                 result = Redirect("/calorieTracker/myLog");
             }
@@ -53,7 +67,7 @@ namespace InversionOfControlContainerExercise.Controllers
             }
             return result;
         }
-
+        [HttpPost]
         public ActionResult RegisterUser()
         {
             bool validFormat = false;
@@ -74,30 +88,52 @@ namespace InversionOfControlContainerExercise.Controllers
             {
                 if (password != null && password.Length > 0)
                 {
-                    if(int.TryParse(weightValue, out weight))
+                    if (int.TryParse(weightValue, out weight))
                     {
                         try
                         {
-                            gender = (Gender) Enum.Parse(typeof(Gender), genderValue.ToUpper());
+                            gender = (Gender)Enum.Parse(typeof(Gender), genderValue.ToUpper());
 
                             validFormat = true;
 
-                            user = new User {Name = name, Username = username, Password = password, Weight = weight, Gender = gender };
+                            user = new User
+                            {
+                                Name = name,
+                                Username = username,
+                                Password = password,
+                                Weight = weight,
+                                Gender = gender
+                            };
+
+                            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket
+                            (
+                                 1,
+                                 username,
+                                 DateTime.Now,
+                                 DateTime.Now.AddMinutes(30),
+                                 true, String.Empty,
+                                 FormsAuthentication.FormsCookiePath
+                            );
+
+                            string encryptedCookie = FormsAuthentication.Encrypt(ticket);
+                            HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedCookie);
+                            cookie.Expires = DateTime.Now.AddMinutes(30);
+                            Response.Cookies.Add(cookie);
 
                             authenticationApplication.Register(user);
-                            FormsAuthentication.SetAuthCookie(username, false);
+                            // FormsAuthentication.SetAuthCookie(username, false);
                             result = Redirect("/calorieTracker/myLog");
                         }
-                        catch(Exception e)
+                        catch (Exception e)
                         {
-                           
+
                         }
                     }
 
                 }
             }
 
-            if(!validFormat)
+            if (!validFormat)
             {
                 result = Redirect("/calorieTracker/authenticate");
             }

@@ -110,7 +110,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\AuthenticationApplication.cs" />
+    <Compile Include="Application\Encrypter.cs" />
     <Compile Include="Application\IAuthenticationApplication.cs" />
+    <Compile Include="Application\IEncrypter.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -118,6 +120,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
+    <Compile Include="Filters\CookieAuthenticationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -177,6 +180,7 @@
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\authentication-controller.js" />
     <Content Include="Scripts\authentication-service.js" />
+    <Content Include="Scripts\authHttpResponseInterceptor.js" />
     <Content Include="Scripts\calorie-tracker-controller.js" />
     <Content Include="Scripts\directives.js" />
     <Content Include="Scripts\errors.json" />

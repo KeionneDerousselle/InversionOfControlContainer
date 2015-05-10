@@ -6,7 +6,7 @@
         requireBase: false
     });
 
-    $urlRouterProvider.otherwise("/calorieTracker/authenticate");
+    $urlRouterProvider.otherwise("/calorieTracker/myLog");
 
     $stateProvider
     .state('app', {

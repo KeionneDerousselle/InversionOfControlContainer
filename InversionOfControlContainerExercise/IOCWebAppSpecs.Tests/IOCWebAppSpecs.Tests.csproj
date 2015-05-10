@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticationApplicationTests.cs" />
+    <Compile Include="EncrypterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserRepositoryTests.cs" />
   </ItemGroup>
