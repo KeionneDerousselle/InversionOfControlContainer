@@ -2,7 +2,7 @@
     return {
         restrict: 'E',
         templateUrl: '/log/logAMeal',
-        controller: ['$scope', 'Log', '$modal', function ($scope, Course, $modal) {
+        controller: ['$scope', '$modal', function ($scope, $modal) {
 
             $scope.meal =
                 {

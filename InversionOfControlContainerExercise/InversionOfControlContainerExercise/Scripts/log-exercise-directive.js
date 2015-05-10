@@ -2,7 +2,7 @@
     return {
         restrict: 'E',
         templateUrl: '/log/logExercise',
-        controller: ['$scope', 'Log', '$modal', function ($scope, Course, $modal) {
+        controller: ['$scope', '$modal', function ($scope, $modal) {
 
             $scope.exercise =
                 {
@@ -23,7 +23,7 @@
 
                 modalInstance.result.then(function (exercise) {
                     console.log("Exercise Name : " + exercise.name + " Exercise Calorie Amount: " + exercise.calorieAmt);
-                    $scope.LogExercisel(exercise);
+                    $scope.LogExercise(exercise);
                 });
             };
         }
