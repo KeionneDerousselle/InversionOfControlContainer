@@ -1,7 +1,9 @@
-﻿using IOCContainerProject.Models;
+﻿using IOCContainerProject.Exceptions;
+using IOCContainerProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +21,48 @@ namespace IOCContainerProject.Infrastructure
             else
             {
                 throw new ArgumentException("You must register a type that implements the interface you passed in.");
+            }
+        }
+
+        public TInterface Resolve<TInterface>()
+        {
+            return (TInterface)ResolveHelper<TInterface>();
+        }
+
+        private object ResolveHelper<TInterface>()
+        {
+            RegisteredObject registeredObject = registeredObjects.Where(x => x.Interface == typeof(TInterface)).FirstOrDefault();
+            if(registeredObject == null)
+            {
+                throw new TypeNotRegisteredException("The type, " + typeof(TInterface).Name + ", has not been registered.");
+            }
+
+            return GetInstanceOfObject(registeredObject);
+        }
+
+        private object GetInstanceOfObject(RegisteredObject registeredObject)
+        {
+            if(registeredObject.Interface == null 
+                || registeredObject.Lifestyle == LifestyleType.Transient)
+            {
+                IEnumerable<object> parameters = ResolveObjectContructorParamsTypes(registeredObject);
+                registeredObject.CreateInstance(parameters.ToArray());
+            }
+
+            return registeredObject.Instance;
+        }
+
+        private IEnumerable<object> ResolveObjectContructorParamsTypes(RegisteredObject registerdObject)
+        {
+           ConstructorInfo[] constructorInfos = registerdObject.Implementation.GetConstructors();
+            
+            foreach(ConstructorInfo constructorInfo in constructorInfos)
+            {
+                foreach(var parameter in constructorInfo.GetParameters())
+                {
+                    var resolveHelperMethod = this.GetType().GetMethod("ResolveHelper").MakeGenericMethod(new Type[] { parameter.ParameterType });
+                    yield return resolveHelperMethod.Invoke(this, new object[]{});
+                }
             }
         }
     }

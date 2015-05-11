@@ -1,4 +1,5 @@
-﻿using IOCContainerProject.Infrastructure;
+﻿using IOCContainerProject.Exceptions;
+using IOCContainerProject.Infrastructure;
 using IOCContainerSpecs.Tests.TestingModels;
 using NUnit.Framework;
 using System;
@@ -31,6 +32,30 @@ namespace IOCContainerSpecs.Tests
         public void TestRegisterInValidDependency()
         {
             iocContainer.Register<INoiseMaker, Librarian>();
+        }
+
+        [Test]
+        public void TestResolveValidDependency()
+        {
+            object returnedInstance = null;
+
+            iocContainer.Register<INoiseMaker, Baby>();
+            returnedInstance = iocContainer.Resolve<INoiseMaker>();
+
+            Assert.That(returnedInstance is INoiseMaker);
+            Assert.That(returnedInstance is Baby);
+        }
+
+        [Test]
+        [ExpectedException(typeof(TypeNotRegisteredException), ExpectedMessage = "The type, INoiseMaker, has not been registered.")]
+        public void TestResolveInValidDependency()
+        {
+            object returnedInstance = null;
+
+            iocContainer.Register<IAnimal, Duck>();
+            returnedInstance = iocContainer.Resolve<INoiseMaker>();
+
+            Assert.That(returnedInstance == null);
         }
     }
 }
