@@ -28,7 +28,7 @@ namespace IOCContainerSpecs.Tests
 
         [Test]
         [ExpectedException(typeof(ArgumentException), ExpectedMessage="You must register a type that implements the interface you passed in.")]
-        public void TestRegisterValidDependency()
+        public void TestRegisterInValidDependency()
         {
             iocContainer.Register<INoiseMaker, Librarian>();
         }

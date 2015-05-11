@@ -46,6 +46,9 @@
     <Compile Include="Infrastructure\IIOCContainer.cs" />
     <Compile Include="Infrastructure\IOCContainer.cs" />
     <Compile Include="Infrastructure\LifetyleType.cs" />
+    <Compile Include="Models\Baby.cs" />
+    <Compile Include="Models\INoiseMaker.cs" />
+    <Compile Include="Models\Librarian.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
