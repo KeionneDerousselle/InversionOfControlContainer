@@ -13,9 +13,9 @@ namespace InversionOfControlContainerExercise.Controllers
     public class AuthenticationController : Controller
     {
         private IAuthenticationApplication authenticationApplication;
-        public AuthenticationController()
+        public AuthenticationController(IAuthenticationApplication authenticationApplication)
         {
-            authenticationApplication = new AuthenticationApplication();
+            this.authenticationApplication = authenticationApplication;
         }
         // GET: Authentication
         [HttpGet]

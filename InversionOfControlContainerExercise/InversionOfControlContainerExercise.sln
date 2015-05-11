@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{535484
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOCWebAppSpecs.Tests", "IOCWebAppSpecs.Tests\IOCWebAppSpecs.Tests.csproj", "{1B61F849-F98A-40F6-8A9D-7E0CF9754752}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOCContainerProject", "IOCContainer\IOCContainerProject.csproj", "{2BD6FC11-EAF3-4A8D-B967-3051416E68D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOCContainerSpecs.Tests", "IOCContainerSpecs.Tests\IOCContainerSpecs.Tests.csproj", "{B0FDCE62-F1E4-4EEE-ABC9-87CC54D51AA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{1B61F849-F98A-40F6-8A9D-7E0CF9754752}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B61F849-F98A-40F6-8A9D-7E0CF9754752}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B61F849-F98A-40F6-8A9D-7E0CF9754752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BD6FC11-EAF3-4A8D-B967-3051416E68D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD6FC11-EAF3-4A8D-B967-3051416E68D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BD6FC11-EAF3-4A8D-B967-3051416E68D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BD6FC11-EAF3-4A8D-B967-3051416E68D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0FDCE62-F1E4-4EEE-ABC9-87CC54D51AA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FDCE62-F1E4-4EEE-ABC9-87CC54D51AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FDCE62-F1E4-4EEE-ABC9-87CC54D51AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FDCE62-F1E4-4EEE-ABC9-87CC54D51AA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

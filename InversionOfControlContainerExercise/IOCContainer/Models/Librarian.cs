@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IOCContainerProject
+namespace IOCContainerProject.Models
 {
-    public class Class1
+    public class Librarian
     {
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IOCContainerProject.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -20,6 +21,10 @@ namespace InversionOfControlContainerExercise
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ConfigurationSettings.AppSettings["users_save_location"] = AppDomain.CurrentDomain.BaseDirectory + "PersistedUsers/allUsers.txt";
+
+            //var factory = new CustomControllerFactory();
+            //ControllerBuilder.Current.SetControllerFactory(factory);
+
         }
     }
 }

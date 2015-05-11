@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IOCContainerSpecs.Tests
+namespace IOCContainerProject.Models
 {
-    public class Class1
+    public interface INoiseMaker
     {
+        string ExecuteNoise();
     }
 }
