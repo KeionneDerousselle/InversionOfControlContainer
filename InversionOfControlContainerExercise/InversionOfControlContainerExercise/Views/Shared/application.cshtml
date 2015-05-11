@@ -9,12 +9,10 @@
             @Html.ActionLink("Calorie Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("My Log", "Index", "Log")</li>
-            </ul>
+            <div ui-view="dropDownNav" class="nav navbar-nav navbar-right"></div>
         </div>
     </div>
 </div>
 <div class="container body-content">
-    <div ui-view></div>
+    <div ui-view ="body"></div>
 </div>

@@ -183,6 +183,7 @@
     <Content Include="Scripts\authHttpResponseInterceptor.js" />
     <Content Include="Scripts\calorie-tracker-controller.js" />
     <Content Include="Scripts\directives.js" />
+    <Content Include="Scripts\drop-down-nav-controller.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\AngularJS\angular-touch.min.js.map" />
     <Content Include="Scripts\AngularJS\angular-sanitize.min.js.map" />

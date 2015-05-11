@@ -16,8 +16,12 @@
     })
     .state('app.authentication', {
         url: "/authenticate",
-        controller: "AuthenticationCtrl",
-        templateUrl: "/authentication"
+        views: {
+            'body': {
+                controller: "AuthenticationCtrl",
+                templateUrl: "/authentication"
+            }
+        }       
     })
     .state('app.authentication.login', {
         url: "/login",
@@ -29,14 +33,17 @@
         controller: "RegisterCtrl",
         templateUrl: "/authentication/register"
     })
-    .state('app.authentication.logout', {
-        url: "/logout",
-        controller: "LogoutCtrl",
-        templateUrl: "/authentication/logout"
-    })
     .state('app.manageLog', {
         url: "/myLog",
-        controller: "MyLogCtrl",
-        templateUrl: "/log/"
+        views: {
+            'dropDownNav': {
+                templateUrl: '/shared/dropDownNav',
+                controller: 'DropDownNavCtrl'
+            },
+            'body': {
+                controller: "MyLogCtrl",
+                templateUrl: "/log/"
+            }
+        }
     });
 }]);
