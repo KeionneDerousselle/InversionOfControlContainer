@@ -10,16 +10,19 @@ namespace InversionOfControlContainerExercise.Application
     public class AuthenticationApplication :IAuthenticationApplication
     {
         private IUserRepository userRepo;
-        public AuthenticationApplication()
+        private IEncrypter encrypter;
+        public AuthenticationApplication(IUserRepository userRepo, IEncrypter encrypter)
         {
-            this.userRepo = new UserRepository();
+            this.userRepo = userRepo;
+            this.encrypter = encrypter;
         }
         public bool UserIsValid(string username, string password)
         {
-            return userRepo.GetAuthenticatedUser(username, password) != null;
+            return userRepo.GetAuthenticatedUser(username, encrypter.EncryptPassword(password)) != null;
         }
         public void Register(User user)
         {
+            user.Password = encrypter.EncryptPassword(user.Password);
             userRepo.Create(user);
         }
     }

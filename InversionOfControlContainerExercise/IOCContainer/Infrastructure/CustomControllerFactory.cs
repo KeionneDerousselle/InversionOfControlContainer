@@ -34,13 +34,8 @@ namespace IOCContainerProject.Infrastructure
 
             if (controllerType != null)
             {
-
                 var resolveMethod = container.GetType().GetMethod("ResolveObjectContructorParamsTypes").MakeGenericMethod(new Type[] { controllerType });
                 var parameters = resolveMethod.Invoke(container, new object[] { }) as IEnumerable<object>;
-
-               /// var constructor = controllerType.GetConstructors().FirstOrDefault();
-                //constructor.Invoke(parameters.ToArray) as IController;
-
                 controller = Activator.CreateInstance(controllerType, parameters.ToArray()) as IController;
             }
 
@@ -68,7 +63,6 @@ namespace IOCContainerProject.Infrastructure
 
             return returnVal;
         }
-
         public void ReleaseController(IController controller)
         {
             var disposable = controller as IDisposable;
@@ -77,7 +71,6 @@ namespace IOCContainerProject.Infrastructure
                 disposable.Dispose();
             }
         }
-
         public SessionStateBehavior GetControllerSessionBehavior(RequestContext requestContext, string controllerName)
         {
             return SessionStateBehavior.Default;
