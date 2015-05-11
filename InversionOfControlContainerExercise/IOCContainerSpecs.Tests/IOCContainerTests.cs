@@ -57,5 +57,47 @@ namespace IOCContainerSpecs.Tests
 
             Assert.That(returnedInstance == null);
         }
+
+        [Test]
+        public void TestResolveValidSingletonDependency()
+        {
+            object returnedInstance = null;
+
+            iocContainer.Register<INoiseMaker, Baby>(LifestyleType.Singleton);
+            returnedInstance = iocContainer.Resolve<INoiseMaker>();
+
+            Assert.That(returnedInstance is INoiseMaker);
+            Assert.That(returnedInstance is Baby);
+
+            object sameReturnedInstance = null;
+            sameReturnedInstance = iocContainer.Resolve<INoiseMaker>();
+
+            Assert.That(sameReturnedInstance is INoiseMaker);
+            Assert.That(sameReturnedInstance is Baby);
+
+            Assert.That(sameReturnedInstance.Equals(returnedInstance));
+            Assert.That(Object.ReferenceEquals(sameReturnedInstance,returnedInstance));
+        }
+
+        [Test]
+        public void TestResolveInValidSingletonDependency()
+        {
+            object returnedInstance = null;
+
+            iocContainer.Register<INoiseMaker, Baby>();
+            returnedInstance = iocContainer.Resolve<INoiseMaker>();
+
+            Assert.That(returnedInstance is INoiseMaker);
+            Assert.That(returnedInstance is Baby);
+
+            object differentReturnedObject = null;
+            differentReturnedObject = iocContainer.Resolve<INoiseMaker>();
+
+            Assert.That(differentReturnedObject is INoiseMaker);
+            Assert.That(differentReturnedObject is Baby);
+
+            Assert.False(differentReturnedObject.Equals(returnedInstance));
+            Assert.False(Object.ReferenceEquals(differentReturnedObject, returnedInstance));
+        }
     }
 }

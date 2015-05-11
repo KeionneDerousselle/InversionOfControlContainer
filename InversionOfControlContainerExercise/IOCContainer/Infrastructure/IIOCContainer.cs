@@ -10,5 +10,6 @@ namespace IOCContainerProject.Infrastructure
     {
         void Register<TInterface, TImplementation>(LifestyleType lifestyle = LifestyleType.Transient);
         TInterface Resolve<TInterface>();
+        IEnumerable<object> ResolveObjectContructorParamsTypes<TImplemented>();
     }
 }

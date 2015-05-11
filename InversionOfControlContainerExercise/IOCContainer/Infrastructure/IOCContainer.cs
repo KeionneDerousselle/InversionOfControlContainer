@@ -42,7 +42,7 @@ namespace IOCContainerProject.Infrastructure
 
         private object GetInstanceOfObject(RegisteredObject registeredObject)
         {
-            if(registeredObject.Interface == null 
+            if(registeredObject.Instance == null 
                 || registeredObject.Lifestyle == LifestyleType.Transient)
             {
                 IEnumerable<object> parameters = ResolveObjectContructorParamsTypes(registeredObject);
@@ -52,18 +52,27 @@ namespace IOCContainerProject.Infrastructure
             return registeredObject.Instance;
         }
 
+        public IEnumerable<object> ResolveObjectContructorParamsTypes<TImplemented>()
+        {
+            ConstructorInfo constructorInfo = typeof(TImplemented).GetConstructors().FirstOrDefault();
+
+            foreach (var parameter in constructorInfo.GetParameters())
+            {
+                var resolveHelperMethod = this.GetType().GetMethod("ResolveHelper", BindingFlags.NonPublic | BindingFlags.Instance).MakeGenericMethod(new Type[] { parameter.ParameterType });
+                yield return resolveHelperMethod.Invoke(this, new object[] { });
+            }           
+        }
+
         private IEnumerable<object> ResolveObjectContructorParamsTypes(RegisteredObject registerdObject)
         {
-           ConstructorInfo[] constructorInfos = registerdObject.Implementation.GetConstructors();
+           ConstructorInfo constructorInfo = registerdObject.Implementation.GetConstructors().FirstOrDefault();
+           
+           foreach(var parameter in constructorInfo.GetParameters())
+           {
+               var resolveHelperMethod = this.GetType().GetMethod("ResolveHelper", BindingFlags.NonPublic | BindingFlags.Instance).MakeGenericMethod(new Type[] { parameter.ParameterType });
+               yield return resolveHelperMethod.Invoke(this, new object[]{});
+           }
             
-            foreach(ConstructorInfo constructorInfo in constructorInfos)
-            {
-                foreach(var parameter in constructorInfo.GetParameters())
-                {
-                    var resolveHelperMethod = this.GetType().GetMethod("ResolveHelper").MakeGenericMethod(new Type[] { parameter.ParameterType });
-                    yield return resolveHelperMethod.Invoke(this, new object[]{});
-                }
-            }
         }
     }
 }

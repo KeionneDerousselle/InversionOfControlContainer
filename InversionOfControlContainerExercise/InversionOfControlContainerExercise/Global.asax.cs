@@ -1,4 +1,6 @@
-﻿using IOCContainerProject.Infrastructure;
+﻿using InversionOfControlContainerExercise.Application;
+using InversionOfControlContainerExercise.Infrastructure;
+using IOCContainerProject.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,8 +24,15 @@ namespace InversionOfControlContainerExercise
 
             ConfigurationSettings.AppSettings["users_save_location"] = AppDomain.CurrentDomain.BaseDirectory + "PersistedUsers/allUsers.txt";
 
-            //var factory = new CustomControllerFactory();
-            //ControllerBuilder.Current.SetControllerFactory(factory);
+
+            var container = new IOCContainer();
+
+            container.Register<IAuthenticationApplication, AuthenticationApplication>();
+            container.Register<IUserRepository, UserRepository>();
+            container.Register<IEncrypter, Encrypter>();
+
+            var factory = new CustomControllerFactory(container);
+            ControllerBuilder.Current.SetControllerFactory(factory);
 
         }
     }
