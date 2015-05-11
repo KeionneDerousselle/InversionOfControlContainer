@@ -29,6 +29,11 @@
         controller: "RegisterCtrl",
         templateUrl: "/authentication/register"
     })
+    .state('app.authentication.logout', {
+        url: "/logout",
+        controller: "LogoutCtrl",
+        templateUrl: "/authentication/logout"
+    })
     .state('app.manageLog', {
         url: "/myLog",
         controller: "MyLogCtrl",

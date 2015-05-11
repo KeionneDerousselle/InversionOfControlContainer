@@ -24,7 +24,6 @@ namespace InversionOfControlContainerExercise
 
             ConfigurationSettings.AppSettings["users_save_location"] = AppDomain.CurrentDomain.BaseDirectory + "PersistedUsers/allUsers.txt";
 
-
             var container = new IOCContainer();
 
             container.Register<IAuthenticationApplication, AuthenticationApplication>();

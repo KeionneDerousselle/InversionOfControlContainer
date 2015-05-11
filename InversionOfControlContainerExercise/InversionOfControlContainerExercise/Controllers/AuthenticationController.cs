@@ -33,6 +33,12 @@ namespace InversionOfControlContainerExercise.Controllers
         {
             return View("~/Views/Authentication/Register.cshtml");
         }
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return Redirect("/calorieTracker/authenticate");
+        }
         [HttpPost]
         public ActionResult LoginUser()
         {
