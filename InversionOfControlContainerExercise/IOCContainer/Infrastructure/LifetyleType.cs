@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IOCContainerProject.Infrastructure
 {
-    public enum LifetyleType
+    public enum LifestyleType
     {
         Transient,
         Singleton

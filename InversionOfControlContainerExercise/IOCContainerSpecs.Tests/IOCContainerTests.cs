@@ -1,5 +1,5 @@
 ﻿using IOCContainerProject.Infrastructure;
-using IOCContainerProject.Models;
+using IOCContainerSpecs.Tests.TestingModels;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

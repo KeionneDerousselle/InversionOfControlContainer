@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IOCContainerProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,17 @@ namespace IOCContainerProject.Infrastructure
 {
     public class IOCContainer : IIOCContainer
     {
-        public void Register<TInterface, TImplementation>(LifetyleType lifestyle = LifetyleType.Transient)
+        private readonly IList<RegisteredObject> registeredObjects = new List<RegisteredObject>();
+        public void Register<TInterface, TImplementation>(LifestyleType lifestyle = LifestyleType.Transient)
         {
-            throw new NotImplementedException();
+            if(typeof(TInterface).IsAssignableFrom(typeof(TImplementation)))
+            {
+                registeredObjects.Add(new RegisteredObject(typeof(TInterface), typeof(TImplementation), lifestyle));
+            }
+            else
+            {
+                throw new ArgumentException("You must register a type that implements the interface you passed in.");
+            }
         }
     }
 }

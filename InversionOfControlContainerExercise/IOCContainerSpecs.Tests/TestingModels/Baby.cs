@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IOCContainerProject.Models
+namespace IOCContainerSpecs.Tests.TestingModels
 {
     public class Baby : INoiseMaker
     {

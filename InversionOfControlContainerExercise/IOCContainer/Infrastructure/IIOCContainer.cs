@@ -8,7 +8,7 @@ namespace IOCContainerProject.Infrastructure
 {
     public interface IIOCContainer
     {
-        void Register<TInterface, TImplementation>(LifetyleType lifestyle = LifetyleType.Transient);
+        void Register<TInterface, TImplementation>(LifestyleType lifestyle = LifestyleType.Transient);
 
     }
 }
