@@ -47,7 +47,7 @@ namespace IOCWebAppSpecs.Tests
             
             ConfigurationSettings.AppSettings["users_save_location"] = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/PersistedUsers/AllUsers.txt";
 
-            authenticationApp = new AuthenticationApplication();
+            authenticationApp = new AuthenticationApplication(new AuthenticationApplication());
             List<User> allUsers = new List<User> { savedUser };
           
             foreach(User u in allUsers)

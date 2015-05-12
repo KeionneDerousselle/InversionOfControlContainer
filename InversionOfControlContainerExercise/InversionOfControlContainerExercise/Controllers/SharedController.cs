@@ -13,5 +13,10 @@ namespace InversionOfControlContainerExercise.Controllers
         {
             return View("~/Views/Shared/application.cshtml");
         }
+
+        public ActionResult DropDownNav()
+        {
+            return View("~/Views/Shared/DropDownNav.cshtml");
+        }
     }
 }
